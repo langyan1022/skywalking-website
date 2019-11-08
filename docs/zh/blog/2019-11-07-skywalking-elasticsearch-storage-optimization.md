@@ -33,7 +33,7 @@ elasticsearch:6.3.2(下文用es代替)
 5. 还有一点，第四步的方式只适用于现有的索引设置，那么新的索引设置呢，总不能每天重复下第四步吧。当然不需要，来干货
 首先登陆kinaba控制台找到开发工具
 贴入以下代码  
-
+` 
  PUT /_template/dry_trace_tmp  
 {
 	"index_patterns": "dry_trace*",  
@@ -49,7 +49,7 @@ elasticsearch:6.3.2(下文用es代替)
 		}  
 	}  
 }  
-
+`
 
 
 
