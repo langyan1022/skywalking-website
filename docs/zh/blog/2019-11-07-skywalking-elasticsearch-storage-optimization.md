@@ -11,7 +11,7 @@ elasticsearch:6.3.2(下文用es代替)
 1. 当然是百度了，百度后其实翻来翻去就找到一个相关的文章https://my.oschina.net/keking/blog/3025303 ，参考之。
 2. 调整skywalking的这两个参数试试  
 
-    `bulkActions: 4000 # Execute the bulk every 2000 requests`
+    `bulkActions: 4000 # Execute the bulk every 2000 requests`  
    ` bulkSize: 60 # flush the bulk every 20mb`
   
     然后es还是继续挂，继续频繁的重启
