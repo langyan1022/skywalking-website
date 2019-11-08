@@ -9,9 +9,11 @@ elasticsearch:6.3.2(下文用es代替)
 
 ### 调优过程
 1. 当然是百度了，百度后其实翻来翻去就找到一个相关的文章https://my.oschina.net/keking/blog/3025303 ，参考之。
-2. 调整skywalking的这两个参数试试
+2. 调整skywalking的这两个参数试试  
+
     `bulkActions: 4000 # Execute the bulk every 2000 requests`
    ` bulkSize: 60 # flush the bulk every 20mb`
+  
     然后es还是继续挂，继续频繁的重启
 
 3. 继续看这个文章，发现了另外一篇https://www.easyice.cn/archives/207 ，继续参考之
@@ -30,22 +32,23 @@ elasticsearch:6.3.2(下文用es代替)
     `curl -XPOST  "http://localhost:9200/dry_trace*/_open"`
 5. 还有一点，第四步的方式只适用于现有的索引设置，那么新的索引设置呢，总不能每天重复下第四步吧。当然不需要，来干货
 首先登陆kinaba控制台找到开发工具
-贴入以下代码
+贴入以下代码  
+
  PUT /_template/dry_trace_tmp  
 {
-	"index_patterns": "dry_trace*",
-	"order": 1,
-	"settings": {
-		"index": {
-			"refresh_interval": "30s",
-			"translog": {
-				"flush_threshold_size": "1GB",
-				"sync_interval": "60s",
-				"durability": "async"
-			}
-		}
-	}
-}
+	"index_patterns": "dry_trace*",  
+	"order": 1,  
+	"settings": {  
+		"index": {  
+			"refresh_interval": "30s",  
+			"translog": {  
+				"flush_threshold_size": "1GB",  
+				"sync_interval": "60s",  
+				"durability": "async"  
+			}  
+		}  
+	}  
+}  
 
 
 
